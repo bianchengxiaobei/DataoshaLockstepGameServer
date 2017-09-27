@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- eSkillType:                             
+	Cure(0),//治疗
+	Hurt(1),
+	Control(2),//控制
+	Move(3);
+ -->
+ <!-- eReleaseWay:
+ 	No_Target(0),
+	Need_Target_No_Turn(1),
+	Need_Target(2),
+	Auto(3);
+  -->
+  <!-- eSkillTargetType:
+  	None(0),
+	Self(1),
+	TeamMember(2),
+	TeamMember_Without_Self(3),
+	Enemy(4); 
+   -->
+<skillConfigs>
+	<skill>
+		<!-- 飞腿  -->
+		<skillId>1</skillId>
+		<eSkillType>1</eSkillType>
+		<eReleaseWay>0</eReleaseWay>
+		<bIsNormalAttack>false</bIsNormalAttack>
+		<prepareTime>0</prepareTime>
+		<cooldownTime>3000</cooldownTime>
+		<releaseTime>0</releaseTime>
+		<lastTime>0</lastTime>
+		<releaseDis>1200</releaseDis>
+		<bImpact>true</bImpact>
+		<eSkillTargetType>4</eSkillTargetType>
+		<eventId>10001</eventId>
+	</skill>
+	<skill>
+		<!-- 飞球  -->
+		<skillId>2</skillId>
+		<eSkillType>1</eSkillType>
+		<eReleaseWay>0</eReleaseWay>
+		<bIsNormalAttack>false</bIsNormalAttack>
+		<prepareTime>0</prepareTime>
+		<cooldownTime>3000</cooldownTime>
+		<releaseTime>0</releaseTime>
+		<lastTime>1500</lastTime>
+		<releaseDis>1200</releaseDis>
+		<bImpact>true</bImpact>
+		<eSkillTargetType>4</eSkillTargetType>
+		<eventId>30001</eventId>
+	</skill>
+	<skill>
+		<!-- 旋转飞腿  -->
+		<skillId>1000</skillId>
+		<eSkillType>1</eSkillType>
+		<eReleaseWay>0</eReleaseWay>
+		<bIsNormalAttack>false</bIsNormalAttack>
+		<prepareTime>0</prepareTime>
+		<cooldownTime>3000</cooldownTime>
+		<releaseTime>0</releaseTime>
+		<lastTime>0</lastTime>
+		<releaseDis>1200</releaseDis>
+		<bImpact>true</bImpact>
+		<eSkillTargetType>4</eSkillTargetType>
+		<eventId>20001</eventId>
+	</skill>
+</skillConfigs>
