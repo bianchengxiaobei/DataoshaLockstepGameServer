@@ -84,7 +84,7 @@ public class BattleContext extends BattleServer
 				BattleManager.getInstance().mServers.remove(this.battleId, this);				
 			}
 			try {
-				Thread.sleep(50);
+				Thread.sleep(100);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -278,15 +278,15 @@ public class BattleContext extends BattleServer
 		{
 			return;
 		}
-		if (System.currentTimeMillis() - this.battleHeartBeatTime > tick)
-		{
+//		if (System.currentTimeMillis() - this.battleHeartBeatTime > tick)
+//		{
 			this.framesMessage.frameCount = this.infuenceFrameCount;
 			this.framesMessage.commands = this.commandList;
 			this.infuenceFrameCount++;
 			MessageUtil.tell_battlePlayer_message(this, framesMessage);
 			this.commandList.clear();
-			this.battleHeartBeatTime = System.currentTimeMillis();
-		}
+//			this.battleHeartBeatTime = System.currentTimeMillis();
+//		}
 	}
 	/**
 	 * 改变游戏状态
