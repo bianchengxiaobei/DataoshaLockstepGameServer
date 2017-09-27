@@ -76,8 +76,7 @@ public class BattleContext extends BattleServer
 	{
 		while (this.battleState != EBattleServerState.eSSBS_Finished)
 		{
-			this.battleHeartBeatTime = System.currentTimeMillis();
-			this.OnHeartBeat(BattleContext.this.battleHeartBeatTime, 100);
+			this.OnHeartBeat(System.currentTimeMillis(), 100);
 			if (this.battleState == EBattleServerState.eSSBS_Finished)
 			{
 				log.debug("战斗结束");
@@ -85,7 +84,7 @@ public class BattleContext extends BattleServer
 				BattleManager.getInstance().mServers.remove(this.battleId, this);				
 			}
 			try {
-				Thread.sleep(100);
+				Thread.sleep(50);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -141,7 +140,8 @@ public class BattleContext extends BattleServer
 		//说明是重新连接进入的
 		if (this.battleState == EBattleServerState.eSSBS_Playing)
 		{
-
+			//发送0帧到当前帧
+			
 		}
 		MessageUtil.tell_battlePlayer_message(this, msg);
 	}
@@ -278,11 +278,15 @@ public class BattleContext extends BattleServer
 		{
 			return;
 		}
-		this.framesMessage.frameCount = this.infuenceFrameCount;
-		this.framesMessage.commands = this.commandList;
-		this.infuenceFrameCount++;
-		MessageUtil.tell_battlePlayer_message(this, framesMessage);
-		this.commandList.clear();
+		if (System.currentTimeMillis() - this.battleHeartBeatTime > tick)
+		{
+			this.framesMessage.frameCount = this.infuenceFrameCount;
+			this.framesMessage.commands = this.commandList;
+			this.infuenceFrameCount++;
+			MessageUtil.tell_battlePlayer_message(this, framesMessage);
+			this.commandList.clear();
+			this.battleHeartBeatTime = System.currentTimeMillis();
+		}
 	}
 	/**
 	 * 改变游戏状态
